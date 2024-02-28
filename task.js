@@ -18,7 +18,12 @@ const shoppingCart = {
   },
 
   removeItem(name) {
-    this.calculateTotal();
+    const index = this.items.findIndex((i) => i.name === name); //находим индекс объекта для удаления
+    if (index > -1) {
+      //если индекс найден он будет больше -1, если не найден, то будет -1
+      this.items.splice(index, 1); //удаляем один объект начиная с индекса объекта
+      this.calculateTotal();
+    }
   },
 
   updateQuantity(name, quantity) {
